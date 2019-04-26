@@ -374,16 +374,37 @@ describe('lib/action', () => {
 					assert.calledWithExactly(global.document.querySelector, 'mock-selector');
 				});
 
+				it('triggers a focus event on the element', () => {
+					assert.called(Event);
+					assert.calledWithExactly(Event, 'focus');
+					assert.called(mockElement.dispatchEvent);
+					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
+				});
+
 				it('sets the element `value` property to the passed in value', () => {
 					assert.strictEqual(mockElement.value, 'mock-value');
 				});
 
 				it('triggers an input event on the element', () => {
-					assert.calledOnce(Event);
+					assert.called(Event);
 					assert.calledWithExactly(Event, 'input', {
 						bubbles: true
 					});
-					assert.calledOnce(mockElement.dispatchEvent);
+					assert.called(mockElement.dispatchEvent);
+					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
+				});
+
+				it('triggers a change event on the element', () => {
+					assert.called(Event);
+					assert.calledWithExactly(Event, 'change');
+					assert.called(mockElement.dispatchEvent);
+					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
+				});
+
+				it('triggers a blur event on the element', () => {
+					assert.called(Event);
+					assert.calledWithExactly(Event, 'blur');
+					assert.called(mockElement.dispatchEvent);
 					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
 				});
 
