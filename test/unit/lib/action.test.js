@@ -386,25 +386,11 @@ describe('lib/action', () => {
 				});
 
 				it('triggers an input event on the element', () => {
-					assert.called(Event);
+					assert.calledOnce(Event);
 					assert.calledWithExactly(Event, 'input', {
 						bubbles: true
 					});
-					assert.called(mockElement.dispatchEvent);
-					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
-				});
-
-				it('triggers a change event on the element', () => {
-					assert.called(Event);
-					assert.calledWithExactly(Event, 'change');
-					assert.called(mockElement.dispatchEvent);
-					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
-				});
-
-				it('triggers a blur event on the element', () => {
-					assert.called(Event);
-					assert.calledWithExactly(Event, 'blur');
-					assert.called(mockElement.dispatchEvent);
+					assert.calledOnce(mockElement.dispatchEvent);
 					assert.calledWithExactly(mockElement.dispatchEvent, mockEvent);
 				});
 
